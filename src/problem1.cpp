@@ -3,8 +3,8 @@
 #include <string>
 #include <fstream>
 
-std::vector<unsigned long long> load_part1() {
-    std::vector<unsigned long long> result;
+std::vector<long long> load_part1() {
+    std::vector<long long> result;
     std::ifstream file("../resources/p01_1.txt");
 
     std::string line;
@@ -15,31 +15,45 @@ std::vector<unsigned long long> load_part1() {
     return result;
 }
 
-inline unsigned long long count_fuel(unsigned long long mass) {
+inline long long count_fuel(long long mass) {
     return (mass / 3) - 2;
 }
 
-unsigned long long part1() {
-    std::vector<unsigned long long> masses = load_part1();
-    std::vector<unsigned long long> fuels(masses.size());
+long long count_fuel_rec(long long mass) {
+    long long fuel_mass = count_fuel(mass);
+    long long mass_sum = 0;
 
-    for (auto i = 0; i < masses.size(); ++i) {
-        fuels[i] = count_fuel(masses[i]);
+    while (fuel_mass > 0) {
+        mass_sum += fuel_mass;
+        fuel_mass = count_fuel(fuel_mass);
     }
 
-    unsigned long long total_mass = 0;
-    for (unsigned long long fuel : fuels) {
-        total_mass += fuel;
+    return mass_sum;
+}
+
+long long part1() {
+    std::vector<long long> masses = load_part1();
+
+    long long total_mass = 0;
+    for (long long mass : masses) {
+        total_mass += count_fuel(mass);
+    }
+
+    return total_mass;
+}
+
+long long part2() {
+    std::vector<long long> masses = load_part1();
+
+    long long total_mass = 0;
+    for (long long mass : masses) {
+        total_mass += count_fuel_rec(mass);
     }
 
     return total_mass;
 }
 
 int main() {
-//    std::cout << "12: " << count_fuel(12) << std::endl;
-//    std::cout << "14: " << count_fuel(14) << std::endl;
-//    std::cout << "1969: " << count_fuel(1969) << std::endl;
-//    std::cout << "100756: " << count_fuel(100756) << std::endl;
-
     std::cout << "aoc p01 - 1: " << part1() << std::endl;
+    std::cout << "aoc p01 - 2: " << part2() << std::endl;
 }
