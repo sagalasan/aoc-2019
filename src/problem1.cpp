@@ -9,7 +9,7 @@ std::vector<long long> load_part1() {
 
     std::string line;
     while (std::getline(file, line)) {
-        result.push_back(std::stoull(line));
+        result.push_back(std::stoll(line));
     }
 
     return result;
@@ -56,4 +56,5 @@ long long part2() {
 int main() {
     std::cout << "aoc p01 - 1: " << part1() << std::endl;
     std::cout << "aoc p01 - 2: " << part2() << std::endl;
+    return 0;
 }

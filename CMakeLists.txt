@@ -5,3 +5,4 @@ set(CMAKE_CXX_STANDARD 14)
 
 #add_executable(aoc_2019 main.cpp)
 add_executable(problem1 src/problem1.cpp)
+add_executable(problem2 src/problem2.cpp)
