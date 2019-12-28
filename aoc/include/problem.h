@@ -6,7 +6,7 @@
 
 namespace aoc {
     using Result = std::variant<std::int64_t, std::size_t, std::string>;
-    using Problem = std::function<Result (std::string&)>;
+    using Problem = std::function<Result (const std::string&)>;
 
     struct ProblemSet {
         std::vector<Problem> problems;

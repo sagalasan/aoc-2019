@@ -5,8 +5,8 @@ set(CMAKE_CXX_STANDARD 17)
 
 add_subdirectory(aoc)
 
-add_executable(aoc aoc/src/main.cpp)
-target_link_libraries(aoc aocproblems)
+add_executable(aoc2019 aoc/src/main.cpp)
+target_link_libraries(aoc2019 aocproblems)
 
 #set(SOURCES
 #        aoc/include/problem.h

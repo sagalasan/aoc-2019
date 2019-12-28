@@ -5,7 +5,7 @@
 
 std::vector<long long> load_part1() {
     std::vector<long long> result;
-    std::ifstream file("../resources/p01_1.txt");
+    std::ifstream file("../resources/p1.txt");
 
     std::string line;
     while (std::getline(file, line)) {

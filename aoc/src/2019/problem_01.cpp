@@ -1,12 +1,14 @@
 #include <problem.h>
+#include <sstream>
 #include "2019/problem_01.h"
 
-namespace aoc::year_2019::problem_01 {
-    std::vector<long long> parse_input(std::istream& input) {
+namespace aoc::year_2019 {
+    std::vector<long long> parse_input(const std::string& input) {
+        std::istringstream istream(input);
         std::vector<long long> result;
 
         std::string line;
-        while (std::getline(input, line)) {
+        while (std::getline(istream, line)) {
             result.push_back(std::stoll(line));
         }
 
@@ -29,7 +31,7 @@ namespace aoc::year_2019::problem_01 {
         return mass_sum;
     }
 
-    std::size_t part1(std::istream &input) {
+    std::size_t day01_part1(const std::string& input) {
         std::vector<long long> masses = parse_input(input);
 
         std::size_t total_mass = 0;
@@ -40,7 +42,7 @@ namespace aoc::year_2019::problem_01 {
         return total_mass;
     }
 
-    std::size_t part2(std::istream &input) {
+    std::size_t day01_part2(const std::string& input) {
         std::vector<long long> masses = parse_input(input);
 
         std::size_t total_mass = 0;
@@ -51,6 +53,5 @@ namespace aoc::year_2019::problem_01 {
         return total_mass;
     }
 
-    REGISTER_AOC_PROBLEM(2019, 1, 1, part1);
-    REGISTER_AOC_PROBLEM(2019, 1, 2, part2);
+
 }
