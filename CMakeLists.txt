@@ -7,3 +7,6 @@ add_subdirectory(aoc)
 
 add_executable(aoc2019 aoc/src/main.cpp)
 target_link_libraries(aoc2019 aocproblems)
+
+enable_testing()
+add_subdirectory(tests)

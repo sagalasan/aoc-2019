@@ -18,6 +18,3 @@ file(COPY ${AOC_RESOURCES} DESTINATION "resources")
 
 add_library(aocproblems ${AOC_SOURCES})
 target_include_directories(aocproblems PUBLIC include)
-
-#add_executable(aoc2019 src/main.cpp)
-#target_link_libraries(aoc2019 aocproblems)
