@@ -1,3 +1,5 @@
+add_subdirectory(thirdparty)
+
 macro(add_problem problem_sources year)
     foreach(problem ${ARGN})
         list(APPEND ${problem_sources}
