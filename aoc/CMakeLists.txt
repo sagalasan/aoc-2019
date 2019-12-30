@@ -9,9 +9,12 @@ macro(add_problem problem_sources year)
     source_group(${year} include/${year}/*|src/${year}/*)
 endmacro()
 
-set(AOC_SOURCES include/problem.h src/problem.cpp include/util.h)
+set(AOC_SOURCES include/problem.h src/problem.cpp
+        include/util.h
+        include/2019/intcode.h src/2019/intcode.cpp
+        )
 
-add_problem(AOC_SOURCES 2019 01)
+add_problem(AOC_SOURCES 2019 01 02)
 
 file(GLOB AOC_RESOURCES resources/*.txt)
 file(COPY ${AOC_RESOURCES} DESTINATION "resources")
