@@ -9,7 +9,7 @@ macro(add_test_problem problem_sources year)
 endmacro()
 
 set(AOC_TEST_SOURCES)
-add_test_problem(AOC_TEST_SOURCES 2019 01 02)
+add_test_problem(AOC_TEST_SOURCES 2019 01 02 03)
 
 add_executable(aoctest ${AOC_TEST_SOURCES} src/main.cpp)
 target_link_libraries(aoctest aocproblems gtest_main)
