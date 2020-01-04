@@ -3,6 +3,9 @@
 #include <sstream>
 #include <iostream>
 #include <set>
+#include <unordered_set>
+#include <util.h>
+#include <boost/functional/hash.hpp>
 
 using namespace aoc::year_2019::day03;
 
@@ -69,14 +72,38 @@ namespace aoc::year_2019::day03 {
         std::vector<PathInstruction> first = instructions[0];
         std::vector<PathInstruction> second = instructions[1];
 
-        std::set<std::pair<std::int64_t, std::int64_t>> seen;
-        std::set<std::pair<std::int64_t, std::int64_t>> intersections;
+        std::unordered_set<std::pair<std::int64_t, std::int64_t>,
+                boost::hash<std::pair<std::int64_t, std::int64_t>>> seen;
+        std::vector<std::pair<std::int64_t, std::int64_t>> second_path;
+        std::unordered_set<std::pair<std::int64_t, std::int64_t>,
+                boost::hash<std::pair<std::int64_t, std::int64_t>>> intersections;
 
-        for (const auto& instruction : first) {
+        // Evaluate the first path into a set
+        evaluate_path(first, std::inserter(seen, seen.end()));
 
+        // Evaluate the second into a vector
+        evaluate_path(second, std::back_inserter(second_path));
+
+        for (const auto& pair : second_path) {
+            auto search = seen.find(pair);
+            if (search != seen.end()) {
+                intersections.insert(*search);
+            }
         }
 
-        return 0;
+        if (intersections.empty()) {
+            return 0;
+        }
+
+        std::int64_t closest_dist = std::numeric_limits<std::int64_t>::max();
+        for (const auto& pair : intersections) {
+            std::int64_t dist = manhattan_distance(0, 0, pair.first, pair.second);
+            if (dist < closest_dist) {
+                closest_dist = dist;
+            }
+        }
+
+        return closest_dist;
     }
 
     std::size_t part2(const std::string& input) {

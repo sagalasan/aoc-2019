@@ -21,3 +21,5 @@ file(COPY ${AOC_RESOURCES} DESTINATION "resources")
 
 add_library(aocproblems ${AOC_SOURCES})
 target_include_directories(aocproblems PUBLIC include)
+
+target_link_libraries(aocproblems ${Boost_LIBRARIES})

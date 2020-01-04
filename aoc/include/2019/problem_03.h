@@ -19,8 +19,8 @@ namespace aoc::year_2019::day03 {
         }
     };
 
-    template <class InputIt, class OutputIt>
-    void evaluate_path(const std::vector<PathInstruction>& instructions, Container& container) {
+    template <class OutputIt>
+    void evaluate_path(const std::vector<PathInstruction>& instructions, OutputIt outputIt) {
 //    void evaluate_path(InputIt first, InputIt last, OutputIt d_first) {
         auto begin = instructions.begin();
 
@@ -49,7 +49,8 @@ namespace aoc::year_2019::day03 {
                 x += x_inc;
                 y += y_inc;
 
-                container.insert()
+                *outputIt = std::make_pair(x, y);
+                outputIt++;
             }
         }
     }
