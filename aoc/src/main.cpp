@@ -12,7 +12,7 @@
 const std::map<std::size_t, std::vector<aoc::Problem>> problem_map = {
         {1, {aoc::year_2019::day01_part1, aoc::year_2019::day01_part2}},
         {2, {aoc::year_2019::day02::part1, aoc::year_2019::day02::part2}},
-        {3, {aoc::year_2019::day03::part1}}
+        {3, {aoc::year_2019::day03::part1, aoc::year_2019::day03::part2}}
 };
 
 std::string read_input(std::uint32_t day) {

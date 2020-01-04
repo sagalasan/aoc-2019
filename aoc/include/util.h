@@ -13,6 +13,17 @@
 //    };
 //}
 
+namespace aoc {
+    template <typename InputIt, typename OutputIt>
+    void index_map(InputIt begin, InputIt end, OutputIt outputIt) {
+        std::size_t index = 0;
+        while (begin != end) {
+            *outputIt = std::make_pair(*begin, index++);
+            ++begin;
+        }
+    }
+}
+
 template <typename T>
 std::string left_pad(const T& value, std::size_t length) {
     return left_pad(value, length, '0');

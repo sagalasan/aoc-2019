@@ -107,6 +107,39 @@ namespace aoc::year_2019::day03 {
     }
 
     std::size_t part2(const std::string& input) {
-        return 0;
+        std::vector<std::vector<PathInstruction>> instructions = parse_input(input);
+        std::vector<PathInstruction> first = instructions[0];
+        std::vector<PathInstruction> second = instructions[1];
+
+        std::unordered_map<std::pair<std::int64_t, std::int64_t>, std::int64_t,
+        boost::hash<std::pair<std::int64_t, std::int64_t>>> seen;
+
+        std::vector<std::pair<std::int64_t, std::int64_t>> first_path;
+        std::vector<std::pair<std::int64_t, std::int64_t>> second_path;
+
+        std::unordered_map<std::pair<std::int64_t, std::int64_t>, std::int64_t,
+                boost::hash<std::pair<std::int64_t, std::int64_t>>> intersections;
+
+        evaluate_path(first, std::back_inserter(first_path));
+        evaluate_path(second, std::back_inserter(second_path));
+
+        aoc::index_map(first_path.begin(), first_path.end(), std::inserter(seen, seen.end()));
+
+        for (std::size_t i = 0; i < second_path.size(); ++i) {
+            const auto& pair = second_path[i];
+            auto search = seen.find(pair);
+            if (search != seen.end()) {
+                intersections.emplace(search->first, search->second + i + 2);
+            }
+        }
+
+        std::int64_t least_steps = std::numeric_limits<std::int64_t>::max();
+        for (const auto& entry : intersections) {
+            if (entry.second < least_steps) {
+                least_steps = entry.second;
+            }
+        }
+
+        return least_steps;
     }
 }
