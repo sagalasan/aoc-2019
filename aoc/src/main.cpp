@@ -4,6 +4,7 @@
 #include <2019/problem_02.h>
 #include <2019/problem_03.h>
 #include <2019/problem_04.h>
+#include <2019/problem_05.h>
 #include <fstream>
 #include <map>
 #include "util.h"
@@ -11,10 +12,11 @@
 #define NUM_PROBLEMS 25
 
 const std::map<std::size_t, std::vector<aoc::Problem>> problem_map = {
-        {1, {aoc::year_2019::day01_part1, aoc::year_2019::day01_part2}},
-        {2, {aoc::year_2019::day02::part1, aoc::year_2019::day02::part2}},
-        {3, {aoc::year_2019::day03::part1, aoc::year_2019::day03::part2}},
-        {4, {aoc::year_2019::day04::part1, aoc::year_2019::day04::part2}}
+//        {1, {aoc::year_2019::day01_part1, aoc::year_2019::day01_part2}},
+//        {2, {aoc::year_2019::day02::part1, aoc::year_2019::day02::part2}},
+//        {3, {aoc::year_2019::day03::part1, aoc::year_2019::day03::part2}},
+//        {4, {aoc::year_2019::day04::part1, aoc::year_2019::day04::part2}},
+        {5, {aoc::year_2019::day05::part1}}
 };
 
 std::string read_input(std::uint32_t day) {

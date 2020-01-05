@@ -3,20 +3,8 @@
 #include <sstream>
 
 namespace aoc::year_2019::day02 {
-    std::vector<std::uint64_t> parse_input(const std::string& input) {
-        std::vector<std::uint64_t> result;
-        std::istringstream stream(input);
-
-        std::string raw_value;
-        while (std::getline(stream, raw_value, ',')) {
-            result.push_back(std::stoull(raw_value));
-        }
-
-        return result;
-    }
-
     std::size_t part1(const std::string& input) {
-        std::vector<std::uint64_t> program = parse_input(input);
+        std::vector<std::int64_t> program = parse_intcode(input);
 
         Intcode intcode(program);
         intcode.set_addr(1, 12);
@@ -26,7 +14,7 @@ namespace aoc::year_2019::day02 {
     }
 
     std::size_t part2(const std::string& input) {
-        std::vector<std::uint64_t> program = parse_input(input);
+        std::vector<std::int64_t> program = parse_intcode(input);
 
         Intcode intcode(program);
 
